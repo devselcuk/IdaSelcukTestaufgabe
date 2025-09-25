@@ -38,7 +38,7 @@ struct ContentViewModelTests {
         let viewModel = ContentViewModel(mediaService: mockService)
         
         #expect(viewModel.state == .loading)
-        #expect(viewModel.playerState is PlayerState.Stopped)
+        #expect(viewModel.playerState is PlayerState.Idle)
     }
     
     @Test("Should load playlist successfully")

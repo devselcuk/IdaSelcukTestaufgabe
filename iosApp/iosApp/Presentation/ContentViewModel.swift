@@ -23,7 +23,7 @@ class ContentViewModel {
     private let mediaService: MediaService
     
     var state: State = .loading
-    var playerState: PlayerState = PlayerState.Stopped()
+    var playerState: PlayerState = PlayerState.Idle()
     
     init(mediaService: MediaService = SharedDependencies.shared.mediaService) {
         self.mediaService = mediaService

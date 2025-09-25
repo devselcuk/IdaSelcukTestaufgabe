@@ -41,7 +41,7 @@ class MediaServiceImplTest {
     @Test
     fun `should start playing when item is stopped and togglePlayPause is called`() = runTest {
         val testItem = createTestPlaylistItem(id = "1", title = "Test Song")
-        mockMediaPlayer.setState(PlayerState.Stopped)
+        mockMediaPlayer.setState(PlayerState.Idle)
         
         mediaService.togglePlayPause(testItem)
         

@@ -27,7 +27,7 @@ class IOSMediaPlayer : MediaPlayer {
     private val avPlayer = AVPlayer()
     private var currentItem: PlaylistItem? = null  // Track current item
 
-    private val _state = MutableStateFlow<PlayerState>(PlayerState.Stopped)
+    private val _state = MutableStateFlow<PlayerState>(PlayerState.Idle)
     @NativeCoroutines
     override var state: StateFlow<PlayerState> = _state
 

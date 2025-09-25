@@ -6,25 +6,8 @@ import com.selcuk.idatest.player.PlayerState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-data class MockMediaItem(
-    val id: String,
-    val title: String,
-    val artist: String,
-    val audioUrl: String,
-    val imageUrl: String?
-) {
-    fun toPlaylistItem() = PlaylistItem(
-        title = title,
-        artist = artist,
-        description = "Test Description",
-        imageUrl = imageUrl,
-        audioUrl = audioUrl,
-        id = id
-    )
-}
-
 class MockMediaPlayer : MediaPlayer {
-    private val _state = MutableStateFlow<PlayerState>(PlayerState.Stopped)
+    private val _state = MutableStateFlow<PlayerState>(PlayerState.Idle)
     override var state: StateFlow<PlayerState> = _state
     
     var togglePlayPauseCalled = false
@@ -66,12 +49,5 @@ class MockMediaPlayer : MediaPlayer {
         } else if (state is PlayerState.Paused) {
             currentItem = state.mediaItem
         }
-    }
-    
-    fun reset() {
-        togglePlayPauseCalled = false
-        lastToggleItem = null
-        currentItem = null
-        _state.value = PlayerState.Stopped
     }
 }
