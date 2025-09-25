@@ -136,15 +136,29 @@ MyApplication/
 │   │   │   ├── repository/       # Repository implementations
 │   │   │   └── service/          # Service implementations
 │   │   ├── player/               # Media player abstractions
-│   │   └── di/                   # Dependency injection
+│   │   │   ├── MediaPlayer.kt    # Media player interface
+│   │   │   └── PlayerState.kt    # Player state sealed class
+│   │   ├── di/                   # Dependency injection
+│   │   │   └── SharedDependencies.kt # DI container
+│   │   └── MediaPlayerFactory.kt # Platform factory
 │   ├── iosMain/                   # iOS-specific implementations
+│   │   ├── IOSMediaPlayer.kt     # AVPlayer implementation
+│   │   └── MediaPlayerFactory.kt # iOS factory implementation
 │   └── androidMain/               # Android-specific implementations
+│       ├── AndroidMediaPlayer.kt # ExoPlayer implementation  
+│       └── MediaPlayerFactory.kt # Android factory implementation
 ├── iosApp/                        # iOS SwiftUI application
 │   ├── Presentation/              # SwiftUI views and ViewModels
 │   │   ├── ContentView.swift     # Main playlist interface
 │   │   ├── ContentViewModel.swift # SwiftUI ViewModel with KMP integration
 │   │   ├── RowView.swift         # Playlist item component
 │   │   └── TimeoutAsyncImage.swift # Custom async image loading
+│   ├── MyApplicationTests/        # iOS unit tests
+│   │   └── MyApplicationTests.swift # Swift tests with MockMediaService
+│   ├── Assets.xcassets/          # iOS app assets
+│   ├── Info.plist               # iOS app configuration
+│   └── iOSApp.swift             # iOS app entry point
+└── gradle/                        # Build configuration
 ```
 
 ## 🔧 Technical Highlights
