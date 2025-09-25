@@ -43,6 +43,7 @@ class IOSMediaPlayer : MediaPlayer {
     override fun togglePlayPause(item: PlaylistItem) {
         if (item.audioUrl == null) {
             _state.value = PlayerState.Error(item)
+            avPlayer.pause()
             return
         }
 
@@ -86,8 +87,6 @@ class IOSMediaPlayer : MediaPlayer {
         avPlayer.play()
     }
 
-
-
     private fun setBackgroundPlay() {
         val session = AVAudioSession.sharedInstance()
         
@@ -130,8 +129,6 @@ class IOSMediaPlayer : MediaPlayer {
         MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nowPlayingInfo
     }
 
-
-    
     private fun setupRemoteCommandCenter() {
         val commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
         
