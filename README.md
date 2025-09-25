@@ -153,18 +153,13 @@ MyApplication/
 │   │   ├── ContentViewModel.swift # SwiftUI ViewModel with KMP integration
 │   │   ├── RowView.swift         # Playlist item component
 │   │   └── TimeoutAsyncImage.swift # Custom async image loading
-│   ├── MyApplicationTests/        # iOS unit tests
-│   │   └── MyApplicationTests.swift # Swift tests with MockMediaService
-│   ├── Assets.xcassets/          # iOS app assets
-│   ├── Info.plist               # iOS app configuration
-│   └── iOSApp.swift             # iOS app entry point
-└── gradle/                        # Build configuration
+
 ```
 
-## 🔧 Technical Highlights
+## Technical Highlights
 
 ### Modern Development Practices
-- **Kotlin Multiplatform Mobile**: 100% business logic sharing with native iOS UI
+- **Kotlin Multiplatform Mobile**: Business logic sharing with native iOS UI
 - **Reactive Architecture**: StateFlow with coroutines for async operations
 - **Dependency Injection**: Clean DI pattern with testable architecture
 - **Error Handling**: Error states
@@ -173,12 +168,12 @@ MyApplication/
 
 ### Platform Integration
 - **iOS**: Native AVPlayer integration with proper background playbook support
-- **Swift Interoperability**: Seamless Kotlin-Swift integration using KMP-NativeCoroutines
+- **Swift Interoperability**: Kotlin-Swift integration using KMP-NativeCoroutines
 - **State Synchronization**: Reactive state management between Kotlin business logic and SwiftUI
-- **iOS Media Controls**: Proper integration with iOS media session and lock screen controls
+- **iOS Media Controls**: Integration with iOS media session and lock screen controls
 - **Background Playback**: Native iOS background audio playback capabilities
 
 ### Network Architecture
-- **Ktor Client**: Professional HTTP client with proper error handling
+- **Ktor Client**: HTTP client
 - **JSON Serialization**: Type-safe JSON handling with kotlinx.serialization
 
