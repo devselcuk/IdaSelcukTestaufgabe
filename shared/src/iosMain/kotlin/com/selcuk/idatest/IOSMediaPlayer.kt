@@ -26,7 +26,6 @@ import platform.AVFoundation.replaceCurrentItemWithPlayerItem
 import platform.CoreMedia.CMTimeGetSeconds
 import platform.Foundation.*
 import platform.MediaPlayer.*
-import platform.Foundation.NSError
 
 @OptIn(ExperimentalForeignApi::class)
 class IOSMediaPlayer : MediaPlayer {
@@ -97,7 +96,6 @@ class IOSMediaPlayer : MediaPlayer {
             error = null
         )
         
-        // Activate session
         session.setActive(true, error = null)
         
         setupRemoteCommandCenter()
@@ -140,7 +138,6 @@ class IOSMediaPlayer : MediaPlayer {
         commandCenter.playCommand.enabled = true
         commandCenter.playCommand.addTargetWithHandler { _ ->
             avPlayer.play()
-            // Update state when remote play is triggered
             currentItem?.let { item ->
                 _state.value = PlayerState.Playing(item)
                 updateNowPlayingInfo(item)
@@ -151,7 +148,6 @@ class IOSMediaPlayer : MediaPlayer {
         commandCenter.pauseCommand.enabled = true
         commandCenter.pauseCommand.addTargetWithHandler { _ ->
             avPlayer.pause()
-            // Update state when remote pause is triggered
             currentItem?.let { item ->
                 _state.value = PlayerState.Paused(item)
                 updateNowPlayingInfo(item)
