@@ -1,10 +1,10 @@
-# MyApplication - iOS Media Player with Shared Business Logic
+# Playlist App
 
-A Kotlin Multiplatform Mobile (KMM) application with clean architecture patterns, clean code principles, and iOS development practices with cross-platform business logic sharing.
+A Kotlin Multiplatform Mobile (KMM) application with clean architecture, clean code principles, and iOS development practices with cross-platform business logic sharing.
 
 ## Project Overview
 
-This application showcases a audio streaming platform with shared Kotlin business logic and native iOS SwiftUI presentation. Using the power of KMM for business logic sharing while maintaining native iOS user experience.
+This application is a single screen audio streaming app with shared Kotlin business logic and native iOS SwiftUI presentation. Using the power of KMM for business logic sharing while maintaining native iOS user experience.
 
 ### Key Features
 
@@ -16,7 +16,7 @@ This application showcases a audio streaming platform with shared Kotlin busines
 - **Network Integration**: RESTful API integration using Ktor
 - **iOS Platform Integration**: Native AVPlayer integration with proper iOS media controls
 
-## 🏗️ Architecture
+## Architecture
 
 ### Architecture Pattern: Clean Architecture + MVVM
 
