@@ -100,7 +100,7 @@ This application is a single screen audio streaming app with shared Kotlin busin
 ### Player States (Sealed Class Architecture)
 ```kotlin
 sealed class PlayerState {
-    data object Stopped : PlayerState()
+    data object Idle : PlayerState()
     data class Playing(val mediaItem: PlaylistItem) : PlayerState()
     data class Paused(val mediaItem: PlaylistItem) : PlayerState()
     data class Error(val mediaItem: PlaylistItem) : PlayerState()
