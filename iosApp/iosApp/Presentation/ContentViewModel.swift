@@ -18,6 +18,7 @@ class ContentViewModel {
         case success([PlaylistItem])
         case failure
     }
+    
     @ObservationIgnored
     private let mediaService: MediaService
     
@@ -34,11 +35,17 @@ class ContentViewModel {
     }
 
     func getMediaItems() {
-        Task {
+        startTimeoutCheck()
+        Task { @MainActor in
             do {
                 state = .loading
                 let playlist = try await mediaService.getPlaylist()
-                state = .success(playlist)
+                if playlist.isEmpty {
+                    self.state = .failure
+                } else {
+                    state = .success(playlist)
+                }
+                
             } catch {
                 state = .failure
             }
@@ -59,6 +66,15 @@ class ContentViewModel {
             return PlaybackInfo(shouldShow: true, systemImageName: "exclamationmark.triangle.fill")
         default:
             return PlaybackInfo(shouldShow: false, systemImageName: nil)
+        }
+    }
+    
+    private func startTimeoutCheck() {
+        Task { @MainActor in
+            try await Task.sleep(for: .seconds(10))
+            if state == .loading {
+                state = .failure
+            }
         }
     }
 }

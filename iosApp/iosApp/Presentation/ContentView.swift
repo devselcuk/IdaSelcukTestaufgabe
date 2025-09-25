@@ -33,7 +33,6 @@ struct ContentView: View {
             .navigationTitle("Playlist")
             .onAppear {
                 viewModel.getMediaItems()
-                startTimeoutCheck()
             }
         }
     }
@@ -58,15 +57,6 @@ struct ContentView: View {
     
     func playbackInfo(for item: PlaylistItem) -> PlaybackInfo {
         viewModel.playbackInfo(for: item)
-    }
-    
-    private func startTimeoutCheck() {
-        Task { @MainActor in
-            try await Task.sleep(for: .seconds(10))
-            if viewModel.state == .loading {
-                viewModel.state = .failure
-            }
-        }
     }
 }
 

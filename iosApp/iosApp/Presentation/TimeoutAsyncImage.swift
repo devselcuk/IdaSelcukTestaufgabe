@@ -50,14 +50,17 @@ struct TimeoutAsyncImage: View {
     }
     
     private var fallbackImage: some View {
-        Image(systemName: "photo")
-            .symbolVariant(.fill.circle)
-            .font(.system(size: imageSize.width))
+        ZStack {
+            Color.gray.opacity(0.4)
+            Image(systemName: "music.quarternote.3")
+                .symbolVariant(.fill.circle)
+            
+        }
     }
     
     private func startTimeout() {
         Task {
-            try? await Task.sleep(nanoseconds: UInt64(timeout * 1_000_000_000))
+            try? await Task.sleep(for: .seconds(timeout))
             await MainActor.run {
                 if isLoading {
                     hasTimedOut = true

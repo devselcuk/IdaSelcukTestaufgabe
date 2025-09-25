@@ -18,6 +18,11 @@ class MediaServiceImpl(
     }
 
     override suspend fun getPlaylist(): List<PlaylistItem> {
-        return playlistRepository.getPlaylist()
+        return try {
+            playlistRepository.getPlaylist()
+        } catch (e: Exception) {
+            println("Error getting playlist: ${e.message}")
+            emptyList()
+        }
     }
 }
